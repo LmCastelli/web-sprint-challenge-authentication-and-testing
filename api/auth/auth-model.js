@@ -19,6 +19,7 @@ function findBy(filter) {
 function findById(id) {
     return db('users')
         .where('id', id)
+        .first()
 }
 
 async function create(user) {

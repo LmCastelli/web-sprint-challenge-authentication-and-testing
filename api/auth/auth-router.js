@@ -15,6 +15,7 @@ router.post('/register', validation, checkIfUsernameExists,  (req, res, next) =>
 
   User.create(user)
     .then(savedUser => {
+      console.log(savedUser)
       res.status(201).json({message: `Welcome to the database, ${savedUser.username}`})
     })
     .catch(next)
@@ -71,5 +72,7 @@ router.post('/login', (req, res) => {
       the response body should include a string exactly as follows: "invalid credentials".
   */
 });
+
+router.use(errorHandling)
 
 module.exports = router;

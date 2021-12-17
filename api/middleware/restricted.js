@@ -27,7 +27,7 @@ const restricted = (req, res, next) => {
   */
 };
 const checkIfUsernameExists = async (req, res, next) => {
-  const username = await db('users').where('username', req.body.username)
+  const username = await db('users').where('username', req.body.username).first()
   if (username) {
     next({status:401, message: 'username taken'})
   } else {
