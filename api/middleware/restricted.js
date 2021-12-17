@@ -26,7 +26,7 @@ const restricted = (req, res, next) => {
       the response body should include a string exactly as follows: "token invalid".
   */
 };
-const checkIfUsernameExists = async (req, res, next) => {
+const checkIfUsernameTaken = async (req, res, next) => {
   const username = await db('users').where('username', req.body.username).first()
   if (username) {
     next({status:401, message: 'username taken'})
@@ -52,7 +52,7 @@ const errorHandling = (err, req, res, next) => {
 
 module.exports = {
   restricted,
-  checkIfUsernameExists,
+  checkIfUsernameTaken,
   errorHandling,
   validation,
 }
