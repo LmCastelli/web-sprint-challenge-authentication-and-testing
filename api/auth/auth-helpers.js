@@ -11,7 +11,6 @@ function tokenBuilder(user) {
         expiresIn: '1d'
     }
     const result = jwt.sign(payload, JWT_SECRET, options)
-    console.log(result)
     return result
 }
 

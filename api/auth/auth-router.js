@@ -15,7 +15,7 @@ router.post('/register', validation, checkIfUsernameTaken,  (req, res, next) => 
 
   User.create(user)
     .then(savedUser => {
-      console.log(savedUser)
+     
       res.status(201).json({message: `Welcome to the database, ${savedUser.username}`})
     })
     .catch(next)
