@@ -31,7 +31,7 @@ describe('Auth Router', () => {
     test('responds with 201 created', async () => {
       expect(res.status).toBe(201)
     })
-    test('responds with welcome message')
-      expect(res.json(message))
+    test('new user is sent back')
+      expect(res.body).toMatchObject({id:3, password: '', username: 'Frog'})
   })
 })
