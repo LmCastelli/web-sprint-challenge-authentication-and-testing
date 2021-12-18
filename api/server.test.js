@@ -11,13 +11,27 @@ beforeAll(async () => {
   await db.migrate.rollback()
   await db.migrate.latest()
 })
-beforeEach(async () => {
-  await db.seed.run()
-})
+
 afterAll(async () => {
   await db.destroy()
 })
 
 test('correct environment', () => {
   expect(process.env.NODE_ENV).toBe('testing')
+})
+
+describe('Auth Router', () => {
+  describe('POST /api/auth/register', () => {
+    let res 
+    beforeEach(async () => {
+      res = await request(server)
+        .post('/api/auth/register')
+        .send({username: 'Frog', password: 'Ribbit'})
+    })
+    test('responds with 201 created', async () => {
+      expect(res.status).toBe(201)
+    })
+    test('responds with welcome message')
+      expect(res.json(message))
+  })
 })
